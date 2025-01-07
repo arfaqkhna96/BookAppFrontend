@@ -4,26 +4,22 @@ phases:
   install:
     runtime-versions:
       nodejs: 14
-   
     commands:
-      # install npm
+      - echo Installing NPM dependencies...
       - npm install
-      - npm install react-scripts --save
+
   pre_build:
     commands:
       - echo Updating dependencies...
       - npm update
       - echo Running audit fix...
       - npm audit fix
-       
- 
-     
-artifacts:
-  # include all files required to run application
-  # notably excluded is node_modules, as this will cause overwrite error on deploy
-  files:
-    - public/**/*
-    - src/**/*
-    - package.json
-    - appspec.yml
-    - scripts/**/*
+
+  build:
+    commands:
+      - echo Build started on date
+      - npm run build
+
+  post_build:
+    commands:
+      - echo Build completed successfully.
