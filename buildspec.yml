@@ -16,12 +16,7 @@ phases:
       - echo Running audit fix...
       - npm audit fix
        
-  build:
-    commands:
-      # set OpenSSL legacy provider environment variable
-      - export NODE_OPTIONS=--openssl-legacy-provider
-      # run build script
-      - npm run build
+ 
      
 artifacts:
   # include all files required to run application
